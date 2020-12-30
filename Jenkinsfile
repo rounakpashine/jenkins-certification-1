@@ -1,22 +1,39 @@
 pipeline {
   agent any
   stages {
-    stage('1') {
-      agent {
-        docker {
-          image 'busybox:latest'
+    stage('1a') {
+      parallel {
+        stage('1') {
+          agent any
+          steps {
+            echo 'Asia'
+          }
+        }
+
+        stage('1b') {
+          steps {
+            echo 'Europe'
+          }
         }
 
       }
-      steps {
-        sh 'echo "Hello World!!"'
-      }
     }
 
-    stage('2') {
-      agent any
-      steps {
-        sh 'echo "step 2"'
+    stage('2a') {
+      parallel {
+        stage('2a') {
+          agent any
+          steps {
+            echo 'India'
+          }
+        }
+
+        stage('2b') {
+          steps {
+            echo 'Spain'
+          }
+        }
+
       }
     }
 
