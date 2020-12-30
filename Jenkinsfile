@@ -8,5 +8,12 @@ pipeline {
       }
     }
 
+    stage('2') {
+      agent any
+      steps {
+        sh 'echo "step 2"'
+      }
+    }
+
   }
 }
