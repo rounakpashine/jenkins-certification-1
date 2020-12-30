@@ -2,7 +2,12 @@ pipeline {
   agent any
   stages {
     stage('1') {
-      agent any
+      agent {
+        docker {
+          image 'busybox:latest'
+        }
+
+      }
       steps {
         sh 'echo "Hello World!!"'
       }
